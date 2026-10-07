@@ -14,6 +14,13 @@ public class Interactable : MonoBehaviour
     public BookIngredientManager bookIngredientManager; // Reference na BookIngredientManager (priradené cez Inspector alebo automaticky)
 
     public UnityEvent onInteraction;        // Event, ktorý sa spustí pri interakcii (napr. animácia pickup)
+    public bool playPickupAnimation = true; // vypni napr. pri rozhovore s NPC
+    [Tooltip("Z akej vzdialenosti sa dá s objektom interagovať. 0 = použije sa Player Reach z PlayerInteraction.")]
+    public float interactDistance = 0f;
+
+    public bool IsHovered { get; private set; } // hráč sa na objekt práve pozerá
+    private QuestGlow questGlow;                // ak existuje, obrys riadi QuestGlow
+    private QuestGlow Glow => questGlow != null ? questGlow : (questGlow = GetComponent<QuestGlow>());
 
     private void OnEnable()
     {
@@ -23,7 +30,7 @@ public class Interactable : MonoBehaviour
 
         DisableOutline();
 
-        if (bookIngredientManager == null)
+        if (bookIngredientManager == null && !string.IsNullOrEmpty(ingredientNameToUnlock))
         {
             // Skús nájsť BookIngredientManager v scéne
             bookIngredientManager = FindObjectOfType<BookIngredientManager>();
@@ -46,29 +53,15 @@ public class Interactable : MonoBehaviour
         bookIngredientManager.UnlockIngredient(ingredientNameToUnlock);
         Debug.Log($"INTERACTION → Unlocking ingredient: {ingredientNameToUnlock}");
     }
-    else if (string.IsNullOrEmpty(ingredientNameToUnlock))
-    {
-        Debug.LogWarning("ingredientNameToUnlock is empty!");
-    }
 
     // Play pickup animation on the player
-    GameObject player = GameObject.FindGameObjectWithTag("Player");
-    if (player != null)
+    if (playPickupAnimation)
     {
-        PlayerController pc = player.GetComponent<PlayerController>();
+        PlayerController pc = FindFirstObjectByType<PlayerController>();
         if (pc != null)
-        {
             pc.GetComponentInChildren<Animator>()?.SetTrigger("Pickup");
-            Debug.Log("Pickup animation triggered on player!");
-        }
         else
-        {
-            Debug.LogError("PlayerController not found on Player!");
-        }
-    }
-    else
-    {
-        Debug.LogError("Player object not found in scene!");
+            Debug.LogError("PlayerController not found in scene!");
     }
 
     // Trigger any additional events (e.g., sound, effects)
@@ -80,13 +73,15 @@ public class Interactable : MonoBehaviour
 
     public void DisableOutline()
     {
-        if (outline != null)
+        IsHovered = false;
+        if (Glow == null && outline != null)
             outline.enabled = false;
     }
 
     public void EnableOutline()
     {
-        if (outline != null)
+        IsHovered = true;
+        if (Glow == null && outline != null)
             outline.enabled = true;
     }
 }

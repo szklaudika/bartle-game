@@ -128,7 +128,16 @@ private bool useFirstFoot = true; // pre striedanie krokov
 private void Move()
 {
     // Stop movement if no animator or player cannot move
-    if (!_hasAnimator || !canMove) return;
+    if (!_hasAnimator) return;
+    if (!canMove)
+    {
+        // stand still (e.g. during dialogue) instead of sliding with the last velocity
+        _currentVelocity = Vector2.zero;
+        _playerRigidbody.linearVelocity = new Vector3(0f, _playerRigidbody.linearVelocity.y, 0f);
+        _animator.SetFloat(_xVelHash, 0f);
+        _animator.SetFloat(_yVelHash, 0f);
+        return;
+    }
 
     // Determine target speed
     float targetSpeed = _inputManager.Run ? _runSpeed : _walkSpeed;
@@ -161,7 +170,7 @@ private void Move()
 
         private void HandleJump()
         {
-            if (!_hasAnimator) return;
+            if (!_hasAnimator || !canMove) return;
             if (!_inputManager.Jump) return;
             if (!_grounded) return;
             _animator.SetTrigger(_jumpHash);
@@ -206,7 +215,7 @@ private void Move()
 
 private void HandleFootsteps()
 {
-    if (!_grounded) return;
+    if (!_grounded || !canMove) return;
     if (_inputManager.Move == Vector2.zero) return;
 
     // --- ŽIADNY PITCH, zvuk ostáva rovnaký ---

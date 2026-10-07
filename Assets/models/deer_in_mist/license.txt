@@ -1,0 +1,11 @@
+Model Information:
+* title:	Deer in Mist
+* source:	https://sketchfab.com/3d-models/deer-in-mist-bee9a369b7694efcb425b2f0e2072165
+* author:	Chaitanya Krishnan (https://sketchfab.com/chaitanyak)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Deer in Mist" (https://sketchfab.com/3d-models/deer-in-mist-bee9a369b7694efcb425b2f0e2072165) by Chaitanya Krishnan (https://sketchfab.com/chaitanyak) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
