@@ -11,7 +11,7 @@ namespace UnityTutorial.Manager        // <-- ADD THIS LINE
         public static GameLogger Instance { get; private set; }
 
         [Header("Config")]
-        [SerializeField] private string serverUrl = "https://your-backend.com/write-zombie-info";
+        [SerializeField] private string serverUrl = "https://your-backend.com/write-info";
         [SerializeField] private float sendIntervalSec = 60f;
 
         private readonly Queue<LogEvent> _queue = new();

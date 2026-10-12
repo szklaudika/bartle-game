@@ -1,16 +1,19 @@
 using UnityEngine;
-using UnityEngine.AI;
 
 public class EnemyHealth : MonoBehaviour
 {
-    public float maxHealth = 60f;  // Spider HP
+    public float maxHealth = 60f;
+    public float destroyDelay = 1.5f; // seconds before the body disappears
     private float currentHealth;
 
     private Animator animator;
-    private NavMeshAgent agent;
-    private SpiderAI ai;
 
     private bool isDead = false;
+    public bool IsDead => isDead;
+
+    // other enemy scripts (e.g. TreeCutterAI) react to these
+    public event System.Action<float> Damaged;
+    public event System.Action Died;
 
     // 🔹 Exposed health percentage for the UI (0–1)
     public float HealthPercent
@@ -26,8 +29,6 @@ public class EnemyHealth : MonoBehaviour
     {
         currentHealth = maxHealth;
         animator = GetComponentInChildren<Animator>();
-        agent = GetComponent<NavMeshAgent>();
-        ai = GetComponent<SpiderAI>();
     }
 
     public void TakeDamage(float amount)
@@ -35,7 +36,7 @@ public class EnemyHealth : MonoBehaviour
         if (isDead) return;
 
         currentHealth -= amount;
-        Debug.Log($"Spider took {amount} damage, remaining health: {currentHealth}");
+        Debug.Log($"{name} took {amount} damage, remaining health: {currentHealth}");
 
         if (FirebaseGameAnalytics.Instance != null && FirebaseGameAnalytics.Instance.IsReady)
         {
@@ -53,6 +54,10 @@ public class EnemyHealth : MonoBehaviour
             currentHealth = 0f;  // clamp so it never goes below 0
             Die();
         }
+        else
+        {
+            Damaged?.Invoke(amount);
+        }
     }
 
     private void Die()
@@ -67,15 +72,13 @@ public class EnemyHealth : MonoBehaviour
             bar.gameObject.SetActive(false);
         }
 
-        // stop AI
-        if (agent != null) agent.isStopped = true;
-        if (ai != null) ai.enabled = false;
-
         // disable collider
         Collider col = GetComponent<Collider>();
         if (col != null) col.enabled = false;
 
-        // destroy the spider after a short delay (so animation can play)
-        Destroy(gameObject, 1.5f); // 1.5 seconds delay
+        Died?.Invoke();
+
+        // destroy the enemy after a short delay (so animation can play)
+        Destroy(gameObject, destroyDelay);
     }
 }
