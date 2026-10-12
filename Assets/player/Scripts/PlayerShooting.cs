@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections;
+using UnityTutorial.PlayerControl;
 
 public class PlayerShooting : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class PlayerShooting : MonoBehaviour
     [Header("Shooting Settings")]
     public float fireCooldown = 2f;  // Total cooldown between shots
     private bool canShoot = true;
+    private PlayerController playerController;
 
     [Header("Animation Timing")]
     public string fireballTriggerName = "Fireball"; // Animator trigger
@@ -24,6 +26,8 @@ public class PlayerShooting : MonoBehaviour
 
     void Start()
     {
+        playerController = GetComponent<PlayerController>();
+
         // Ensure animator exists
         if (playerAnimator == null)
         {
@@ -76,6 +80,15 @@ public class PlayerShooting : MonoBehaviour
     {
         // Ray from the center of the screen
         Ray ray = cam.ScreenPointToRay(new Vector2(Screen.width * 0.5f, Screen.height * 0.5f));
+
+        // shootPoint rides on the camera; in third person move it back to the first-person spot
+        Vector3 spawnPos = shootPoint.position;
+        if (playerController != null)
+        {
+            ray.origin += ray.direction * playerController.CameraPullback;
+            spawnPos -= playerController.CameraOffset;
+        }
+
         Vector3 targetPoint = ray.GetPoint(100f);
         RaycastHit hit = default;
 
@@ -89,10 +102,10 @@ public class PlayerShooting : MonoBehaviour
             targetPoint = h.point;
         }
 
-        Vector3 dir = (targetPoint - shootPoint.position).normalized;
+        Vector3 dir = (targetPoint - spawnPos).normalized;
         Quaternion rot = Quaternion.LookRotation(dir, Vector3.up);
 
-        Instantiate(bulletPrefab, shootPoint.position, rot);
+        Instantiate(bulletPrefab, spawnPos, rot);
 
         // Log shooting 
         if (FirebaseGameAnalytics.Instance != null && FirebaseGameAnalytics.Instance.IsReady)

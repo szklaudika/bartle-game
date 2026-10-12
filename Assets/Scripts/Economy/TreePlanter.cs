@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityTutorial.PlayerControl;
 
 // Sadenie semienok: hráč sa pozrie na zem pred sebou a stlačí F.
 public class TreePlanter : MonoBehaviour
@@ -64,6 +65,10 @@ public class TreePlanter : MonoBehaviour
         terrain = null;
 
         Ray ray = _camera.ScreenPointToRay(new Vector2(Screen.width * 0.5f, Screen.height * 0.5f));
+        // v pohľade z tretej osoby meraj dosah od hlavy, nie od kamery
+        PlayerController controller = player.GetComponent<PlayerController>();
+        if (controller != null)
+            ray.origin += ray.direction * controller.CameraPullback;
         RaycastHit best = default;
         float nearest = float.MaxValue;
         foreach (RaycastHit h in Physics.RaycastAll(ray, plantRange, ~0, QueryTriggerInteraction.Ignore))

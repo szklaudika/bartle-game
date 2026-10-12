@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityTutorial.PlayerControl;
 
 public class PlayerInteraction : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class PlayerInteraction : MonoBehaviour
     public Camera playerCamera;
 
     Interactable currentInteractable;
+    PlayerController playerController;
 
     void Awake()
     {
@@ -17,6 +19,8 @@ public class PlayerInteraction : MonoBehaviour
             playerCamera = GetComponentInChildren<Camera>(true);
         if (playerCamera == null)
             playerCamera = Camera.main;
+
+        playerController = GetComponentInParent<PlayerController>();
     }
 
     void Update()
@@ -43,6 +47,9 @@ public class PlayerInteraction : MonoBehaviour
         if (playerCamera == null) return;
 
         Ray ray = new Ray(playerCamera.transform.position, playerCamera.transform.forward);
+        // v pohľade z tretej osoby začni lúč pri hlave, aby dosah bol rovnaký ako z prvej osoby
+        if (playerController != null)
+            ray.origin += ray.direction * playerController.CameraPullback;
 
         float rayLength = Mathf.Max(playerReach, maxInteractDistance);
         RaycastHit hit;
