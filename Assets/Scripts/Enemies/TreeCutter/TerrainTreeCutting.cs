@@ -33,6 +33,10 @@ public class TerrainTreeCutting : MonoBehaviour
     private readonly List<TreeTarget> _claimed = new();
     private Material _stumpMaterial;
 
+    // Cez "Paint Trees" sú na teréne namaľované aj kamene – tie sa rúbať nesmú.
+    private static readonly string[] NotTreeKeywords = { "rock", "stone", "boulder", "cliff" };
+    private readonly Dictionary<TerrainData, bool[]> _cuttablePrototypes = new();
+
     // Nájde najbližší voľný strom v okruhu a rezervuje ho, aby ho nerúbali dvaja naraz.
     public TreeTarget ClaimNearestTree(Vector3 from, float maxDistance)
     {
@@ -48,10 +52,14 @@ public class TerrainTreeCutting : MonoBehaviour
             Bounds bounds = new Bounds(origin + data.size * 0.5f, data.size);
             if (bounds.SqrDistance(from) > bestSqr) continue;
 
+            bool[] cuttable = GetCuttablePrototypes(data);
             int count = data.treeInstanceCount;
             for (int i = 0; i < count; i++)
             {
                 TreeInstance tree = data.GetTreeInstance(i);
+                if (tree.prototypeIndex < 0 || tree.prototypeIndex >= cuttable.Length || !cuttable[tree.prototypeIndex])
+                    continue;
+
                 Vector3 world = origin + Vector3.Scale(tree.position, data.size);
                 float sqr = (world - from).sqrMagnitude;
                 if (sqr >= bestSqr || IsClaimed(terrain, tree.position)) continue;
@@ -67,6 +75,29 @@ public class TerrainTreeCutting : MonoBehaviour
 
         if (best != null) _claimed.Add(best);
         return best;
+    }
+
+    private bool[] GetCuttablePrototypes(TerrainData data)
+    {
+        if (_cuttablePrototypes.TryGetValue(data, out bool[] cuttable)) return cuttable;
+
+        TreePrototype[] prototypes = data.treePrototypes;
+        cuttable = new bool[prototypes.Length];
+        for (int i = 0; i < prototypes.Length; i++)
+        {
+            GameObject prefab = prototypes[i].prefab;
+            cuttable[i] = prefab != null && !ContainsAny(prefab.name.ToLowerInvariant(), NotTreeKeywords);
+        }
+
+        _cuttablePrototypes[data] = cuttable;
+        return cuttable;
+    }
+
+    private static bool ContainsAny(string text, string[] keywords)
+    {
+        foreach (string k in keywords)
+            if (text.Contains(k)) return true;
+        return false;
     }
 
     public void Release(TreeTarget target)
@@ -96,6 +127,74 @@ public class TerrainTreeCutting : MonoBehaviour
 
         SpawnFallingTree(target, data, fallDirection);
         return true;
+    }
+
+    // ---------- Sadenie stromov (TreePlanter / GrowingTree) ----------
+
+    // Náhodný druh stromu (nie kameň) pre daný terén; -1, ak žiadny nie je.
+    public int RandomTreePrototype(Terrain terrain)
+    {
+        bool[] cuttable = GetCuttablePrototypes(terrain.terrainData);
+        var options = new List<int>();
+        for (int i = 0; i < cuttable.Length; i++)
+            if (cuttable[i]) options.Add(i);
+        return options.Count == 0 ? -1 : options[Random.Range(0, options.Count)];
+    }
+
+    // Stojí v okruhu (vodorovne) nejaký strom alebo kameň namaľovaný na teréne?
+    public bool IsTreeNear(Vector3 position, float radius)
+    {
+        float sqrRadius = radius * radius;
+        foreach (Terrain terrain in Terrain.activeTerrains)
+        {
+            TerrainData data = terrain.terrainData;
+            Vector3 origin = terrain.transform.position;
+            Bounds bounds = new Bounds(origin + data.size * 0.5f, data.size + Vector3.up * 1000f);
+            if (bounds.SqrDistance(position) > sqrRadius) continue;
+
+            int count = data.treeInstanceCount;
+            for (int i = 0; i < count; i++)
+            {
+                Vector3 world = origin + Vector3.Scale(data.GetTreeInstance(i).position, data.size);
+                float dx = world.x - position.x, dz = world.z - position.z;
+                if (dx * dx + dz * dz < sqrRadius) return true;
+            }
+        }
+        return false;
+    }
+
+    // Pridá dorastený strom na terén – potom ho drevorubači môžu znova zoťať.
+    public void AddTree(Terrain terrain, Vector3 worldPosition, int prototypeIndex, float heightScale, float widthScale, float rotation)
+    {
+        TerrainData data = terrain.terrainData;
+        if (!_originalTrees.ContainsKey(data))
+            _originalTrees[data] = data.treeInstances;
+
+        Vector3 local = worldPosition - terrain.transform.position;
+        terrain.AddTreeInstance(new TreeInstance
+        {
+            position = new Vector3(local.x / data.size.x, local.y / data.size.y, local.z / data.size.z),
+            prototypeIndex = prototypeIndex,
+            heightScale = heightScale,
+            widthScale = widthScale,
+            rotation = rotation,
+            color = Color.white,
+            lightmapColor = Color.white,
+        });
+        terrain.Flush();
+    }
+
+    public static Terrain TerrainAt(Vector3 position)
+    {
+        foreach (Terrain terrain in Terrain.activeTerrains)
+        {
+            Vector3 origin = terrain.transform.position;
+            Vector3 size = terrain.terrainData.size;
+            if (position.x >= origin.x && position.x <= origin.x + size.x &&
+                position.z >= origin.z && position.z <= origin.z + size.z)
+                return terrain;
+        }
+        return null;
     }
 
     private void SpawnFallingTree(TreeTarget target, TerrainData data, Vector3 fallDirection)

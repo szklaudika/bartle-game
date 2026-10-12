@@ -76,12 +76,18 @@ public class PlayerShooting : MonoBehaviour
     {
         // Ray from the center of the screen
         Ray ray = cam.ScreenPointToRay(new Vector2(Screen.width * 0.5f, Screen.height * 0.5f));
-        Vector3 targetPoint;
+        Vector3 targetPoint = ray.GetPoint(100f);
+        RaycastHit hit = default;
 
-        if (Physics.Raycast(ray, out RaycastHit hit, 100f))
-            targetPoint = hit.point;
-        else
-            targetPoint = ray.GetPoint(100f);
+        // nearest hit that isn't the player herself (her collider can block the camera ray)
+        float nearest = float.MaxValue;
+        foreach (RaycastHit h in Physics.RaycastAll(ray, 100f, ~0, QueryTriggerInteraction.Ignore))
+        {
+            if (h.transform.IsChildOf(transform) || h.distance >= nearest) continue;
+            nearest = h.distance;
+            hit = h;
+            targetPoint = h.point;
+        }
 
         Vector3 dir = (targetPoint - shootPoint.position).normalized;
         Quaternion rot = Quaternion.LookRotation(dir, Vector3.up);

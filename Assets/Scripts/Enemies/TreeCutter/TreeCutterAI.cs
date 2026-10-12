@@ -20,6 +20,7 @@ public class TreeCutterAI : MonoBehaviour
     public float aggroRadius = 12f;
     public float loseInterestRadius = 25f;
     public float aggroAfterHitTime = 15f;     // ako dlho prenasleduje hráča po zásahu
+    public int killReward = 25;               // peniaze pre hráča za porazenie
 
     [Header("Útok")]
     public float attackRange = 1.8f;
@@ -265,6 +266,8 @@ public class TreeCutterAI : MonoBehaviour
 
         _audio.Stop();
         Log("enemy_kill", transform.position, name);
+        if (PlayerWallet.Instance != null)
+            PlayerWallet.Instance.AddMoney(killReward, transform.position, name);
         enabled = false;
     }
 

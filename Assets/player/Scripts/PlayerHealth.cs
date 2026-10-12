@@ -6,6 +6,12 @@ public class PlayerHealth : MonoBehaviour
     private float currentHealth;
 
     private bool isDead = false;
+    public bool IsDead => isDead;
+    public float CurrentHealth => currentHealth;
+
+    // PlayerHUD listens to these (health bar, red flash, death screen)
+    public event System.Action<float> Damaged;
+    public event System.Action Died;
 
     [Header("UI Feedback")]
     public DamageFlash damageFlash;   // you already set this up earlier
@@ -14,9 +20,20 @@ public class PlayerHealth : MonoBehaviour
     public GameObject crosshair;
 
 
-    private void Start()
+    private void Awake()
     {
         currentHealth = maxHealth;
+    }
+
+    private void Start()
+    {
+        // health bar + death screen build themselves at runtime
+        if (FindFirstObjectByType<PlayerHUD>() == null)
+            new GameObject("PlayerHUD").AddComponent<PlayerHUD>().Init(this);
+
+        // money, seed shop and tree planting
+        if (FindFirstObjectByType<PlayerWallet>() == null)
+            new GameObject("PlayerWallet").AddComponent<PlayerWallet>().Init(this);
     }
 
     public void TakeDamage(float amount)
@@ -44,6 +61,8 @@ public class PlayerHealth : MonoBehaviour
         {
             damageFlash.Flash();
         }
+
+        Damaged?.Invoke(amount);
 
         if (currentHealth <= 0)
         {
@@ -73,10 +92,13 @@ public class PlayerHealth : MonoBehaviour
     if (healthUI != null)
         healthUI.gameObject.SetActive(false);
 
-    GameOverManager.Instance.ShowGameOver();
+    if (GameOverManager.Instance != null)
+        GameOverManager.Instance.ShowGameOver();
 
     PlayerShooting shooting = GetComponent<PlayerShooting>();
     if (shooting != null) shooting.enabled = false;
+
+    Died?.Invoke();
 }
 
 }

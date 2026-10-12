@@ -30,6 +30,7 @@ public class Bullet : MonoBehaviour
     {
         if (hasHit) return;
         if (other.CompareTag("Player")) return;
+        if (other.isTrigger) return; // fly through trigger zones (pickups, interaction areas)
 
         hasHit = true;
 
