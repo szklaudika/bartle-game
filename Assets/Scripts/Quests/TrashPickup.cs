@@ -9,6 +9,7 @@ public class TrashPickup : MonoBehaviour
     public float pickupDistance = 10f;
 
     private Interactable _interactable;
+    private QuestGlow _glow;
     private bool _collected;
 
     private void Awake()
@@ -16,14 +17,35 @@ public class TrashPickup : MonoBehaviour
         _interactable = GetComponent<Interactable>();
         _interactable.interactDistance = pickupDistance;
         // ružový pulzujúci obrys, kým odpadok nie je zdvihnutý
-        if (!TryGetComponent(out QuestGlow _))
-            gameObject.AddComponent<QuestGlow>();
+        if (!TryGetComponent(out _glow))
+            _glow = gameObject.AddComponent<QuestGlow>();
         if (string.IsNullOrEmpty(_interactable.message))
             _interactable.message = "Zdvihni odpadok";
     }
 
     private void OnEnable() => _interactable.onInteraction.AddListener(Collect);
     private void OnDisable() => _interactable.onInteraction.RemoveListener(Collect);
+
+    private void Start()
+    {
+        if (QuestManager.Instance == null) return;
+        QuestManager.Instance.OnQuestsChanged += RefreshActive;
+        RefreshActive();
+    }
+
+    private void OnDestroy()
+    {
+        if (QuestManager.Instance != null)
+            QuestManager.Instance.OnQuestsChanged -= RefreshActive;
+    }
+
+    // odpadky sa dajú zbierať (a svietia) až od úlohy "Vyčisti potok" – najprv treba hovoriť s jeleňom
+    private void RefreshActive()
+    {
+        bool active = QuestManager.Instance.CurrentStage == QuestManager.Stage.CleanStream;
+        _interactable.enabled = active;
+        _glow.glowActive = active;
+    }
 
     private void Collect()
     {

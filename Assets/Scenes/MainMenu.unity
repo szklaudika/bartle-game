@@ -4584,7 +4584,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04b119d5300d72346a13620e111e1121, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MainMenuController
-  gameSceneName: TerrainDemoScene
+  gameSceneName: ForestDefender
   title: {fileID: 1304601496}
   mainPanel: {fileID: 1787481640}
   tutorialPanel: {fileID: 1665502347}
@@ -4600,6 +4600,8 @@ MonoBehaviour:
   mainFirstButton: {fileID: 1386498159}
   tutorialFirstButton: {fileID: 803603142}
   settingsFirstButton: {fileID: 2124939052}
+  buttonFont: {fileID: 11400000, guid: 4163ac26bf810dd4282c9c923ef48ad5, type: 2}
+  menuMusic: {fileID: 8300000, guid: d3b31119f8c417b4884cb436c3fd471e, type: 3}
 --- !u!114 &1712473598
 MonoBehaviour:
   m_ObjectHideFlags: 0

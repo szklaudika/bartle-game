@@ -268,6 +268,8 @@ public class TreeCutterAI : MonoBehaviour
         Log("enemy_kill", transform.position, name);
         if (PlayerWallet.Instance != null)
             PlayerWallet.Instance.AddMoney(killReward, transform.position, name);
+        if (QuestManager.Instance != null)
+            QuestManager.Instance.LumberjackKilled(name, transform.position);
         enabled = false;
     }
 

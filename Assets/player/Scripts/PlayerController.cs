@@ -20,6 +20,8 @@ namespace UnityTutorial.PlayerControl
         [SerializeField] private float Dis2Ground = 0.08f;
         [SerializeField] private LayerMask GroundCheck;
         [SerializeField] private float AirResistance = 0.8f;
+        [SerializeField] private float JumpCooldown = 0.3f;
+        private float _nextJumpTime;
 
         [Header("Third Person Camera")]
         [SerializeField] private bool StartInThirdPerson = false;
@@ -35,12 +37,17 @@ namespace UnityTutorial.PlayerControl
         [SerializeField] private float VerticalSmoothTime = 0.08f;           // softens bumps in the terrain
         [SerializeField] private float GroundSnapDistance = 0.3f;            // stay grounded over small dips while walking
 
+        [Header("First Person Body")]
+        [SerializeField] private bool HideHeadInFirstPerson = true; // her head and hair would cover the view when the camera sits inside them
+        [SerializeField] private float CastBlendSpeed = 5f;          // how fast the camera locks onto / releases the head while casting
+
         [Header("Obstacles")]
         [SerializeField] private float StepHeight = 0.4f;       // rocks/edges up to this height are walked over
-        [SerializeField] private float FallingDelay = 0.2f;     // short air time (bumps, steps) doesn't play the falling animation
+        [SerializeField] private float FallingDelay = 0.5f;     // short air time (bumps, steps) doesn't play the falling animation
 
         private CapsuleCollider _capsule;
         private float _airTime;
+        private Vector3 _groundNormal = Vector3.up;
 
         private Vector3 _eyeLocal;
         private bool _eyeInitialized;
@@ -52,12 +59,21 @@ namespace UnityTutorial.PlayerControl
         private float _camBlend; // 0 = first person, 1 = third person
         private float _currentPullback;
 
+        private bool _casting;
+        private float _castBlend; // 0 = normal, 1 = camera locked to the head while casting
+
+        private Transform _headBone;
+        private Vector3 _headScale;
+        private Vector3 _cameraRootPos; // CameraRoot sits on the head bone, so read it while the head has full size
+
         public bool IsThirdPerson => _thirdPerson;
+        // the cast animation leans her forward – the smoothed camera would stay behind, inside her body
+        public void SetCasting(bool casting) => _casting = casting;
         // how far the camera currently sits behind the head along its view direction;
         // aim/interaction rays skip this much so reach and self-hits match first person
         public float CameraPullback => _currentPullback;
         // world offset of the camera from its first-person spot
-        public Vector3 CameraOffset => Camera.position - CameraRoot.position;
+        public Vector3 CameraOffset => Camera.position - _cameraRootPos;
 
         private Rigidbody _playerRigidbody;
         private InputManager _inputManager;
@@ -123,6 +139,11 @@ private bool useFirstFoot = true; // pre striedanie krokov
             _fallingHash = Animator.StringToHash("Falling");
             _crouchHash = Animator.StringToHash("Crouch");
 
+            if (_hasAnimator && _animator.isHuman)
+                _headBone = _animator.GetBoneTransform(HumanBodyBones.Head);
+            if (_headBone != null)
+                _headScale = _headBone.localScale;
+
             _thirdPerson = StartInThirdPerson;
             _camBlend = _thirdPerson ? 1f : 0f;
             _yaw = transform.eulerAngles.y;
@@ -142,7 +163,16 @@ private bool useFirstFoot = true; // pre striedanie krokov
 
         private void LateUpdate()
         {
+            // full-size head first, so CameraRoot (a child of the head bone) is at the eyes
+            if (_headBone != null) _headBone.localScale = _headScale;
+            _cameraRootPos = CameraRoot.position;
+
             CamMovements();
+
+            // first person: shrink the head away before the mesh is skinned – the camera sits inside it
+            // and the cast animation turns her head, which pulled her face and hair into the view
+            if (_headBone != null && HideHeadInFirstPerson && _camBlend < 0.5f)
+                _headBone.localScale = _headScale * 0.001f;
         }
 
 
@@ -190,6 +220,7 @@ private bool useFirstFoot = true; // pre striedanie krokov
 
     // Camera position follows player (pulled back behind the shoulder in third person)
     _camBlend = Mathf.MoveTowards(_camBlend, _thirdPerson ? 1f : 0f, CameraSwitchSpeed * Time.deltaTime);
+    _castBlend = Mathf.MoveTowards(_castBlend, _casting ? 1f : 0f, CastBlendSpeed * Time.deltaTime);
     PositionCamera(GetEyePivot());
 
     // Rotate player horizontally
@@ -210,7 +241,9 @@ private Vector3 GetEyePivot()
     }
 
     _eyeLocal = Vector3.Lerp(_eyeLocal, headLocal, EyeHeightFollowSpeed * Time.deltaTime);
-    Vector3 pivot = Vector3.Lerp(transform.TransformPoint(_eyeLocal), CameraRoot.position, HeadBobAmount);
+    // while casting, follow the head fully so the camera moves with her when she leans in
+    float follow = Mathf.Lerp(HeadBobAmount, 1f, _castBlend);
+    Vector3 pivot = Vector3.Lerp(transform.TransformPoint(_eyeLocal), CameraRoot.position, follow);
 
     // soften small steps of uneven ground; snap on big jumps (teleports)
     if (Mathf.Abs(pivot.y - _smoothEyeY) > 1f)
@@ -287,6 +320,19 @@ private void Move()
         _playerRigidbody.AddForce(facing * new Vector3(xVelDifference, 0, zVelDifference), ForceMode.VelocityChange);
 
         Vector3 moveDir = facing * new Vector3(_currentVelocity.x, 0, _currentVelocity.y);
+
+        // downhill: follow the slope instead of walking straight out into the air
+        // (gravity alone pulled her down too slowly, so she lost the ground and played the falling animation)
+        if (worldVelocity.y < 0.5f && Time.time >= _nextJumpTime)
+        {
+            Vector3 alongGround = Vector3.ProjectOnPlane(moveDir, _groundNormal);
+            if (alongGround.sqrMagnitude > 0.0001f)
+            {
+                float downhillY = alongGround.normalized.y * moveDir.magnitude;
+                if (downhillY < 0f && worldVelocity.y > downhillY)
+                    _playerRigidbody.AddForce(Vector3.up * (downhillY - worldVelocity.y), ForceMode.VelocityChange);
+            }
+        }
         if (_inputManager.Move != Vector2.zero && moveDir.sqrMagnitude > 0.01f)
             StepUp(moveDir.normalized);
     }
@@ -313,9 +359,16 @@ private void Move()
         {
             if (!_hasAnimator || !canMove) return;
             if (!_inputManager.Jump) return;
-            if (!_grounded) return;
+            if (!_grounded || Time.time < _nextJumpTime) return;
             _animator.SetTrigger(_jumpHash);
-           
+
+            // push off right away – waiting for the animation event made the jump feel late
+            _playerRigidbody.AddForce(-_playerRigidbody.linearVelocity.y * Vector3.up, ForceMode.VelocityChange);
+            _playerRigidbody.AddForce(Vector3.up * JumpFactor, ForceMode.Impulse);
+            _playerRigidbody.useGravity = true;
+            // she is still near the ground for a few physics steps – don't jump again from there
+            _nextJumpTime = Time.time + JumpCooldown;
+
            // Firebase log
             if (FirebaseGameAnalytics.Instance != null && FirebaseGameAnalytics.Instance.IsReady)
             {
@@ -323,10 +376,9 @@ private void Move()
             }
         }
 
+        // animation event in the Jump clip; the force is already applied in HandleJump
         public void JumpAddForce()
         {
-            _playerRigidbody.AddForce(-_playerRigidbody.linearVelocity.y * Vector3.up, ForceMode.VelocityChange);
-            _playerRigidbody.AddForce(Vector3.up * JumpFactor, ForceMode.Impulse);
             _animator.ResetTrigger(_jumpHash);
         }
 
@@ -360,12 +412,14 @@ private void Move()
                     _playerRigidbody.AddForce(Vector3.down * 2f, ForceMode.VelocityChange);
 
                 _grounded = true;
+                _groundNormal = hitInfo.normal;
                 _airTime = 0f;
                 SetAnimationGrounding();
                 return;
             }
 
             _grounded = false;
+            _groundNormal = Vector3.up;
             _airTime += Time.fixedDeltaTime;
             _animator.SetFloat(_zVelHash, _playerRigidbody.linearVelocity.y);
             SetAnimationGrounding();

@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Text;
 using TMPro;
 using UnityEngine;
@@ -35,6 +36,7 @@ public class QuestUI : MonoBehaviour
     private int _openedFrame;
     private Action _onDialogueFinished;
     private Coroutine _toastRoutine;
+    private readonly Queue<string> _toasts = new Queue<string>();
 
     private void Awake()
     {
@@ -47,6 +49,10 @@ public class QuestUI : MonoBehaviour
         _questManager = GetComponent<QuestManager>();
         _questManager.OnQuestsChanged += RefreshObjectives;
         _questManager.OnQuestCompleted += title => ShowToast($"Úloha splnená: {title}");
+        _questManager.OnQuestStarted += title => ShowToast($"Nová úloha: {title}");
+        // po poslednej úlohe ponúkne prechod do otvoreného sveta
+        if (!TryGetComponent(out TutorialCompleteUI _))
+            gameObject.AddComponent<TutorialCompleteUI>();
         RefreshObjectives();
     }
 
@@ -61,17 +67,41 @@ public class QuestUI : MonoBehaviour
 
     // ---------- Úlohy ----------
 
+    // splnené úlohy sú prečiarknuté, aktuálna je posledná; ďalšie sa ukážu, až keď na ne príde rad
     private void RefreshObjectives()
     {
         var qm = _questManager;
-        var sb = new StringBuilder("<b>Úlohy</b>\n");
-        sb.AppendLine(ObjectiveLine(qm.talkQuestTitle, qm.TalkedToDeer));
-        sb.Append(ObjectiveLine($"{qm.trashQuestTitle} – {qm.trashCounterLabel}: {qm.TrashCollected}/{qm.TrashTotal}", qm.StreamCleaned));
+        var sb = new StringBuilder("<b>Úlohy</b>");
+        for (var stage = QuestManager.Stage.TalkToDeer; stage <= qm.CurrentStage && stage < QuestManager.Stage.Done; stage++)
+        {
+            bool done = stage < qm.CurrentStage;
+            sb.Append('\n').Append(ObjectiveLine(StageText(qm, stage), done));
+
+            if (stage == QuestManager.Stage.PlantTrees && !done)
+            {
+                sb.Append('\n').Append(SubLine(qm.openShopLabel, qm.ShopOpened));
+                sb.Append('\n').Append(SubLine(qm.buySeedsLabel, qm.SeedsBought > 0));
+                sb.Append('\n').Append(SubLine($"{qm.plantTreesLabel}: {Mathf.Min(qm.TreesPlanted, qm.treesToPlant)}/{qm.treesToPlant}",
+                                               qm.TreesPlanted >= qm.treesToPlant));
+            }
+        }
+        if (qm.CurrentStage == QuestManager.Stage.Done)
+            sb.Append('\n').Append($"<color=#{ColorUtility.ToHtmlStringRGB(doneColor)}>Všetky úlohy splnené!</color>");
         _objectivesText.text = sb.ToString();
     }
 
+    private static string StageText(QuestManager qm, QuestManager.Stage stage) => stage switch
+    {
+        QuestManager.Stage.CleanStream => $"{qm.trashQuestTitle} – {qm.trashCounterLabel}: {qm.TrashCollected}/{qm.TrashTotal}",
+        QuestManager.Stage.KillLumberjack => $"{qm.lumberjackQuestTitle}: {Mathf.Min(qm.LumberjacksKilled, qm.LumberjacksTotal)}/{qm.LumberjacksTotal}",
+        _ => qm.StageTitle(stage)
+    };
+
     private string ObjectiveLine(string text, bool done) =>
         done ? $"<color=#{ColorUtility.ToHtmlStringRGB(doneColor)}><s>• {text}</s></color>" : $"• {text}";
+
+    private string SubLine(string text, bool done) =>
+        done ? $"<color=#{ColorUtility.ToHtmlStringRGB(doneColor)}>    <s>– {text}</s></color>" : $"    – {text}";
 
     // ---------- Nápoveda (E) ----------
 
@@ -133,18 +163,24 @@ public class QuestUI : MonoBehaviour
 
     // ---------- Oznámenie ----------
 
+    // oznámenia idú za sebou ("Úloha splnená" a hneď "Nová úloha"), neprepíšu sa
     public void ShowToast(string text)
     {
-        if (_toastRoutine != null) StopCoroutine(_toastRoutine);
-        _toastRoutine = StartCoroutine(ToastRoutine(text));
+        _toasts.Enqueue(text);
+        if (_toastRoutine == null)
+            _toastRoutine = StartCoroutine(ToastRoutine());
     }
 
-    private IEnumerator ToastRoutine(string text)
+    private IEnumerator ToastRoutine()
     {
-        _toastText.text = text;
-        _toastPanel.SetActive(true);
-        yield return new WaitForSecondsRealtime(toastDuration);
+        while (_toasts.Count > 0)
+        {
+            _toastText.text = _toasts.Dequeue();
+            _toastPanel.SetActive(true);
+            yield return new WaitForSecondsRealtime(toastDuration);
+        }
         _toastPanel.SetActive(false);
+        _toastRoutine = null;
     }
 
     // ---------- Stavba UI ----------

@@ -56,6 +56,8 @@ public class TreePlanter : MonoBehaviour
         GrowingTree.Plant(terrain, point, prototype, growTime);
         _ui.ShowMessage("Semienko zasadené – strom čoskoro vyrastie");
         PlayerWallet.Log("tree_plant", point, "seed", _wallet.Seeds);
+        if (QuestManager.Instance != null)
+            QuestManager.Instance.NotifyTreePlanted(point);
     }
 
     // bod na teréne v strede obrazovky; ignoruje hráčku a neviditeľné zóny

@@ -1,0 +1,398 @@
+# 379 unused files, 923.3 MB
+# Roots: scenes in Build Settings, Resources folders, project settings.
+#     701.1 MB   117  Assets/TerrainDemoScene_URP/Terrain
+#     116.2 MB    38  Assets/TerrainDemoScene_URP/Prefabs
+#      46.0 MB    63  Assets/Hash Game studios/Trash Bag & Trash Box
+#      27.8 MB     1  Assets/player
+#      20.0 MB     5  Assets/TerrainDemoScene_URP/VFXGraphs
+#       5.2 MB   136  Assets/Alebardium/Bloodlines UI
+#       4.6 MB     4  Assets/TerrainDemoScene_URP/TextMeshPro
+#       1.7 MB     1  Assets/models/deer_in_mist
+#       0.3 MB     2  Assets/TerrainDemoScene_URP/Scripts
+#       0.1 MB     5  Assets/TerrainDemoScene_URP/Settings
+#       0.1 MB     1  Assets/_Recovery
+#       0.0 MB     2  Assets
+#       0.0 MB     1  Assets/TutorialInfo/Icons
+#       0.0 MB     1  Assets/TutorialInfo
+#       0.0 MB     1  Assets/prefabs
+#       0.0 MB     1  Assets/TerrainDemoScene_URP
+
+Assets/_Recovery/0.unity
+Assets/Alebardium/Bloodlines UI/Animations/Slider (Round) Animation Preview 1.anim
+Assets/Alebardium/Bloodlines UI/Animations/Slider (Segments 7) Animation Preview 1.anim
+Assets/Alebardium/Bloodlines UI/Animations/Slider 1 (Horizontal).controller
+Assets/Alebardium/Bloodlines UI/Animations/Slider 1 (Round).controller
+Assets/Alebardium/Bloodlines UI/Animations/Slider 3 (Segments).controller
+Assets/Alebardium/Bloodlines UI/Animations/Slider Animation Preview 1.anim
+Assets/Alebardium/Bloodlines UI/Audio/AudioMixer.mixer
+Assets/Alebardium/Bloodlines UI/Audio/Click Button SFX.wav
+Assets/Alebardium/Bloodlines UI/Audio/Hover Button SFX.wav
+Assets/Alebardium/Bloodlines UI/Fonts/MedievalSharp SDF.asset
+Assets/Alebardium/Bloodlines UI/Prefabs/Button/Button 1 (Gray).prefab
+Assets/Alebardium/Bloodlines UI/Prefabs/Button/Button 1 (Red).prefab
+Assets/Alebardium/Bloodlines UI/Prefabs/Button/Button 2 (Gray).prefab
+Assets/Alebardium/Bloodlines UI/Prefabs/Button/Button 2 (Red).prefab
+Assets/Alebardium/Bloodlines UI/Prefabs/Button/Button 3 (Gray).prefab
+Assets/Alebardium/Bloodlines UI/Prefabs/Button/Button 3 (Red).prefab
+Assets/Alebardium/Bloodlines UI/Prefabs/Canvas/Canvas (Slider Scene).prefab
+Assets/Alebardium/Bloodlines UI/Prefabs/Icon/Icon-Toggle 1.prefab
+Assets/Alebardium/Bloodlines UI/Prefabs/Icon/Icon-Toggle 2.prefab
+Assets/Alebardium/Bloodlines UI/Prefabs/Icon/Icon-Toggle 3.prefab
+Assets/Alebardium/Bloodlines UI/Prefabs/Icon/Icon-Toggle 4.prefab
+Assets/Alebardium/Bloodlines UI/Prefabs/Input Field/InputField (Gray Frame Gray Text).prefab
+Assets/Alebardium/Bloodlines UI/Prefabs/Input Field/InputField (Gray Frame White Text).prefab
+Assets/Alebardium/Bloodlines UI/Prefabs/Input Field/InputField (Red Frame Gray Text).prefab
+Assets/Alebardium/Bloodlines UI/Prefabs/Input Field/InputField (Red Frame White Text).prefab
+Assets/Alebardium/Bloodlines UI/Prefabs/Slider (Horizontal)/Slider 1 (Horizontal).prefab
+Assets/Alebardium/Bloodlines UI/Prefabs/Slider (Horizontal)/Slider 2 (Horizontal).prefab
+Assets/Alebardium/Bloodlines UI/Prefabs/Slider (Horizontal)/Slider 3 (Horizontal).prefab
+Assets/Alebardium/Bloodlines UI/Prefabs/Slider (Horizontal)/Slider 4 (Horizontal).prefab
+Assets/Alebardium/Bloodlines UI/Prefabs/Slider (Horizontal)/Slider 5 (Horizontal).prefab
+Assets/Alebardium/Bloodlines UI/Prefabs/Slider (Round)/Slider 1 (Round _ With Runes).prefab
+Assets/Alebardium/Bloodlines UI/Prefabs/Slider (Round)/Slider 1 (Round).prefab
+Assets/Alebardium/Bloodlines UI/Prefabs/Slider (Round)/Slider 2 (Round _ With Runes).prefab
+Assets/Alebardium/Bloodlines UI/Prefabs/Slider (Round)/Slider 2 (Round).prefab
+Assets/Alebardium/Bloodlines UI/Prefabs/Slider (Segments)/Slider 1 (Segments).prefab
+Assets/Alebardium/Bloodlines UI/Prefabs/Slider (Segments)/Slider 2 (Segments).prefab
+Assets/Alebardium/Bloodlines UI/Prefabs/Slider (Segments)/Slider 3 (Segments).prefab
+Assets/Alebardium/Bloodlines UI/Prefabs/Slider (Segments)/Slider 4 (Segments _ With Handle).prefab
+Assets/Alebardium/Bloodlines UI/Prefabs/Toggle/Toggle 1 (Round).prefab
+Assets/Alebardium/Bloodlines UI/Prefabs/Toggle/Toggle 1 (Square).prefab
+Assets/Alebardium/Bloodlines UI/Prefabs/Toggle/Toggle 2 (Round).prefab
+Assets/Alebardium/Bloodlines UI/Prefabs/Toggle/Toggle 2 (Square).prefab
+Assets/Alebardium/Bloodlines UI/Prefabs/Toggle/Toggle 3 (Round).prefab
+Assets/Alebardium/Bloodlines UI/Prefabs/Toggle/Toggle 3 (Square).prefab
+Assets/Alebardium/Bloodlines UI/Scenes/Demo Scene (Bloodlines UI).unity
+Assets/Alebardium/Bloodlines UI/Textures/Button/Button1/Status_Disable.png
+Assets/Alebardium/Bloodlines UI/Textures/Button/Button1/Status_Grey_Default.png
+Assets/Alebardium/Bloodlines UI/Textures/Button/Button1/Status_Grey_Hover.png
+Assets/Alebardium/Bloodlines UI/Textures/Button/Button1/Status_Pressed.png
+Assets/Alebardium/Bloodlines UI/Textures/Button/Button1/Status_Red_Default.png
+Assets/Alebardium/Bloodlines UI/Textures/Button/Button1/Status_Red_Hover.png
+Assets/Alebardium/Bloodlines UI/Textures/Button/Button2/Button2_Status_Disable.png
+Assets/Alebardium/Bloodlines UI/Textures/Button/Button2/Button2_Status_Grey_Default.png
+Assets/Alebardium/Bloodlines UI/Textures/Button/Button2/Button2_Status_Grey_Hover.png
+Assets/Alebardium/Bloodlines UI/Textures/Button/Button2/Button2_Status_Pressed.png
+Assets/Alebardium/Bloodlines UI/Textures/Button/Button2/Button2_Status_Red_Default.png
+Assets/Alebardium/Bloodlines UI/Textures/Button/Button2/Button2_Status_Red_Hover.png
+Assets/Alebardium/Bloodlines UI/Textures/Button/Button3/Button3_Status_Disable.png
+Assets/Alebardium/Bloodlines UI/Textures/Button/Button3/Button3_Status_Grey_Default.png
+Assets/Alebardium/Bloodlines UI/Textures/Button/Button3/Button3_Status_Grey_Hover.png
+Assets/Alebardium/Bloodlines UI/Textures/Button/Button3/Button3_Status_Pressed.png
+Assets/Alebardium/Bloodlines UI/Textures/Button/Button3/Button3_Status_Red_Default.png
+Assets/Alebardium/Bloodlines UI/Textures/Button/Button3/Button3_Status_Red_Hover.png
+Assets/Alebardium/Bloodlines UI/Textures/Frame/Frame_background.png
+Assets/Alebardium/Bloodlines UI/Textures/Frame/Frame_main_menu.png
+Assets/Alebardium/Bloodlines UI/Textures/Frame/Frame_main_menu_red.png
+Assets/Alebardium/Bloodlines UI/Textures/Frame/Frame_outline.png
+Assets/Alebardium/Bloodlines UI/Textures/Frame/Frame_outline_red.png
+Assets/Alebardium/Bloodlines UI/Textures/Frame/Frame_outline_v2.png
+Assets/Alebardium/Bloodlines UI/Textures/Icon/Icons.png
+Assets/Alebardium/Bloodlines UI/Textures/Icon/Icons_19.png
+Assets/Alebardium/Bloodlines UI/Textures/Icon/Icons_20.png
+Assets/Alebardium/Bloodlines UI/Textures/Icon/Icons_settins_frame.png
+Assets/Alebardium/Bloodlines UI/Textures/Icon/Icons-1.png
+Assets/Alebardium/Bloodlines UI/Textures/Icon/Icons-16.png
+Assets/Alebardium/Bloodlines UI/Textures/Icon/Icons-17.png
+Assets/Alebardium/Bloodlines UI/Textures/Icon/Icons-18.png
+Assets/Alebardium/Bloodlines UI/Textures/Icon/Icons-2.png
+Assets/Alebardium/Bloodlines UI/Textures/Icon/Icons-3.png
+Assets/Alebardium/Bloodlines UI/Textures/Icon/Icons-4.png
+Assets/Alebardium/Bloodlines UI/Textures/Icon/Icons-5.png
+Assets/Alebardium/Bloodlines UI/Textures/Input Field/Cross.png
+Assets/Alebardium/Bloodlines UI/Textures/Input Field/Frame_input.png
+Assets/Alebardium/Bloodlines UI/Textures/Input Field/Frame_input_red.png
+Assets/Alebardium/Bloodlines UI/Textures/Layout/CHECKBOX.png
+Assets/Alebardium/Bloodlines UI/Textures/Layout/Colors.png
+Assets/Alebardium/Bloodlines UI/Textures/Layout/HEALTH.png
+Assets/Alebardium/Bloodlines UI/Textures/Layout/MENU.png
+Assets/Alebardium/Bloodlines UI/Textures/Layout/ON_OFF.png
+Assets/Alebardium/Bloodlines UI/Textures/Layout/PROGRESS_BAR.png
+Assets/Alebardium/Bloodlines UI/Textures/Layout/SETTINGS.png
+Assets/Alebardium/Bloodlines UI/Textures/Layout/TOGGLE_SWITCH.png
+Assets/Alebardium/Bloodlines UI/Textures/Notice/Frame_notice_v1.png
+Assets/Alebardium/Bloodlines UI/Textures/Notice/Frame_notice_v2.png
+Assets/Alebardium/Bloodlines UI/Textures/Progress_Bar/Rectangle (Segments)/Health_diamond_empty_v1.png
+Assets/Alebardium/Bloodlines UI/Textures/Progress_Bar/Rectangle (Segments)/Health_diamond_empty_v2.png
+Assets/Alebardium/Bloodlines UI/Textures/Progress_Bar/Rectangle (Segments)/Health_diamond_full_v1.png
+Assets/Alebardium/Bloodlines UI/Textures/Progress_Bar/Rectangle (Segments)/Health_diamond_full_v2.png
+Assets/Alebardium/Bloodlines UI/Textures/Progress_Bar/Rectangle (Segments)/Health_rod_empty_v1.png
+Assets/Alebardium/Bloodlines UI/Textures/Progress_Bar/Rectangle (Segments)/Health_rod_full.png
+Assets/Alebardium/Bloodlines UI/Textures/Progress_Bar/Rectangle (Segments)/Slider_5pct_v1.png
+Assets/Alebardium/Bloodlines UI/Textures/Progress_Bar/Rectangle (Segments)/Slider_empty.png
+Assets/Alebardium/Bloodlines UI/Textures/Progress_Bar/Rectangle (Segments)/Slider_full_v1.png
+Assets/Alebardium/Bloodlines UI/Textures/Progress_Bar/Rectangle (Segments)/Slider_toggler.png
+Assets/Alebardium/Bloodlines UI/Textures/Progress_Bar/Rectangle/Progress_Bar_Rectangle_empty_v1.png
+Assets/Alebardium/Bloodlines UI/Textures/Progress_Bar/Rectangle/Progress_Bar_Rectangle_empty_v2.png
+Assets/Alebardium/Bloodlines UI/Textures/Progress_Bar/Rectangle/Progress_Bar_Rectangle_empty_v3.png
+Assets/Alebardium/Bloodlines UI/Textures/Progress_Bar/Rectangle/Progress_Bar_Rectangle_empty_v4.png
+Assets/Alebardium/Bloodlines UI/Textures/Progress_Bar/Rectangle/Progress_Bar_Rectangle_empty_v5.png
+Assets/Alebardium/Bloodlines UI/Textures/Progress_Bar/Rectangle/Progress_Bar_Rectangle_full_v1.png
+Assets/Alebardium/Bloodlines UI/Textures/Progress_Bar/Rectangle/Progress_Bar_Rectangle_full_v2.png
+Assets/Alebardium/Bloodlines UI/Textures/Progress_Bar/Rectangle/Progress_Bar_Rectangle_full_v3.png
+Assets/Alebardium/Bloodlines UI/Textures/Progress_Bar/Rectangle/Progress_Bar_Rectangle_full_v4.png
+Assets/Alebardium/Bloodlines UI/Textures/Progress_Bar/Rectangle/Progress_Bar_Rectangle_full_v5.png
+Assets/Alebardium/Bloodlines UI/Textures/Progress_Bar/Round/Progress_Bar_Round_empty_v1_v4.png
+Assets/Alebardium/Bloodlines UI/Textures/Progress_Bar/Round/Progress_Bar_Round_empty_v2_v3.png
+Assets/Alebardium/Bloodlines UI/Textures/Progress_Bar/Round/Progress_Bar_Round_full_v1.png
+Assets/Alebardium/Bloodlines UI/Textures/Progress_Bar/Round/Progress_Bar_Round_full_v2.png
+Assets/Alebardium/Bloodlines UI/Textures/Progress_Bar/Round/Progress_Bar_Round_full_v3.png
+Assets/Alebardium/Bloodlines UI/Textures/Progress_Bar/Round/Progress_Bar_Round_full_v4.png
+Assets/Alebardium/Bloodlines UI/Textures/Toggle/Icon Checkmark 1 (Rect).png
+Assets/Alebardium/Bloodlines UI/Textures/Toggle/Icon Checkmark 1 (Round).png
+Assets/Alebardium/Bloodlines UI/Textures/Toggle/Icon Checkmark 2 (Rect).png
+Assets/Alebardium/Bloodlines UI/Textures/Toggle/Icon Checkmark 2 (Round).png
+Assets/Alebardium/Bloodlines UI/Textures/Toggle/Icon Checkmark 3 (Rect).png
+Assets/Alebardium/Bloodlines UI/Textures/Toggle/Icon Checkmark 3 (Round).png
+Assets/Alebardium/Bloodlines UI/Textures/Toggle/Icons-10.png
+Assets/Alebardium/Bloodlines UI/Textures/Toggle/Icons-11.png
+Assets/Alebardium/Bloodlines UI/Textures/Toggle/Icons-12.png
+Assets/Alebardium/Bloodlines UI/Textures/Toggle/Icons-13.png
+Assets/Alebardium/Bloodlines UI/Textures/Toggle/Icons-14.png
+Assets/Alebardium/Bloodlines UI/Textures/Toggle/Icons-15.png
+Assets/Alebardium/Bloodlines UI/Textures/Toggle/Icons-6.png
+Assets/Alebardium/Bloodlines UI/Textures/Toggle/Icons-7.png
+Assets/Alebardium/Bloodlines UI/Textures/Toggle/Icons-8.png
+Assets/Alebardium/Bloodlines UI/Textures/Toggle/Icons-9.png
+Assets/Hash Game studios/Trash Bag & Trash Box/Materials/Garbage/Bottle/Bottle 1/Bottle 1 glass blue dirt mat.mat
+Assets/Hash Game studios/Trash Bag & Trash Box/Materials/Lightis/Blue Light mat.mat
+Assets/Hash Game studios/Trash Bag & Trash Box/Materials/Lightis/Orange Light mat.mat
+Assets/Hash Game studios/Trash Bag & Trash Box/Materials/Lightis/White Light mat.mat
+Assets/Hash Game studios/Trash Bag & Trash Box/Scenes/All objects Scene 1.unity
+Assets/Hash Game studios/Trash Bag & Trash Box/Scenes/All objects Scene 2.unity
+Assets/Hash Game studios/Trash Bag & Trash Box/Scenes/Render Scene.unity
+Assets/Hash Game studios/Trash Bag & Trash Box/Scenes/Render Scene/LightingData.asset
+Assets/Hash Game studios/Trash Bag & Trash Box/Scenes/Render Scene/Lightmap-0_comp_dir.png
+Assets/Hash Game studios/Trash Bag & Trash Box/Scenes/Render Scene/Lightmap-0_comp_light.exr
+Assets/Hash Game studios/Trash Bag & Trash Box/Scenes/Render Scene/Lightmap-1_comp_dir.png
+Assets/Hash Game studios/Trash Bag & Trash Box/Scenes/Render Scene/Lightmap-1_comp_light.exr
+Assets/Hash Game studios/Trash Bag & Trash Box/Scenes/Render Scene/New Lighting Settings.lighting
+Assets/Hash Game studios/Trash Bag & Trash Box/Scenes/Render Scene/ReflectionProbe-0.exr
+Assets/Hash Game studios/Trash Bag & Trash Box/Textures/Garbage/Board/Wood board 1/D/Wood board 1_D_Emissive.png
+Assets/Hash Game studios/Trash Bag & Trash Box/Textures/Garbage/Board/Wood board 1/painted/Wood board 1_C_Emissive.png
+Assets/Hash Game studios/Trash Bag & Trash Box/Textures/Garbage/Board/Wood board 2/D/Wood board 2_D_Emissive.png
+Assets/Hash Game studios/Trash Bag & Trash Box/Textures/Garbage/Board/Wood board 2/Pinted/Wood board 2_P_Emissive.png
+Assets/Hash Game studios/Trash Bag & Trash Box/Textures/Garbage/Bottle/Bottle 1/c/Bottle 1_C_Metalic.png
+Assets/Hash Game studios/Trash Bag & Trash Box/Textures/Garbage/Bottle/Bottle 1/d/Bottle 1_D_Metalic.png
+Assets/Hash Game studios/Trash Bag & Trash Box/Textures/Garbage/Bottle/Bottle 2/d/Bottle 2_Body_D_Emissive.png
+Assets/Hash Game studios/Trash Bag & Trash Box/Textures/Garbage/Canned/Canned food 1/1/Canned food_D_Emissive.png
+Assets/Hash Game studios/Trash Bag & Trash Box/Textures/Garbage/Canned/Canned food 1/2/Canned food_R_Emissive.png
+Assets/Hash Game studios/Trash Bag & Trash Box/Textures/Garbage/Canned/Canned food 1/Canned food_UV.png
+Assets/Hash Game studios/Trash Bag & Trash Box/Textures/Garbage/Canned/Canned food 2/1/Canned food 2_D_Emissive.png
+Assets/Hash Game studios/Trash Bag & Trash Box/Textures/Garbage/Canned/Canned food 2/Canned food_UV.png
+Assets/Hash Game studios/Trash Bag & Trash Box/Textures/Garbage/Canned/Paint can/1/Paint can_D_Emissive.png
+Assets/Hash Game studios/Trash Bag & Trash Box/Textures/Garbage/Canned/Paint can/Paint can_UV.png
+Assets/Hash Game studios/Trash Bag & Trash Box/Textures/Garbage/Canned/Soda can 1/D/Soda can 1_D_Emissive.png
+Assets/Hash Game studios/Trash Bag & Trash Box/Textures/Garbage/Canned/Soda can 1/Soda can_UV.png
+Assets/Hash Game studios/Trash Bag & Trash Box/Textures/Garbage/Color spray/D/Color spray_D_Emissive.png
+Assets/Hash Game studios/Trash Bag & Trash Box/Textures/Garbage/Color spray/Pianted/Color spray_P_Emissive.png
+Assets/Hash Game studios/Trash Bag & Trash Box/Textures/Garbage/Gallon/2/Gallon 2_M_Emissive.png
+Assets/Hash Game studios/Trash Bag & Trash Box/Textures/Garbage/Gallon/20L/Gallon 20L_D_Emissive.png
+Assets/Hash Game studios/Trash Bag & Trash Box/Textures/Garbage/Ground mask/1/Ground mask_D_Emissive.png
+Assets/Hash Game studios/Trash Bag & Trash Box/Textures/Garbage/Ground mask/2/Ground mask_D2_Emissive.png
+Assets/Hash Game studios/Trash Bag & Trash Box/Textures/Garbage/Ground mask/3/Ground mask_D3_Emissive.png
+Assets/Hash Game studios/Trash Bag & Trash Box/Textures/Garbage/Ground mask/4/Ground mask_D4_Emissive.png
+Assets/Hash Game studios/Trash Bag & Trash Box/Textures/Garbage/Pizza box/Pizza box_UV.png
+Assets/Hash Game studios/Trash Bag & Trash Box/Textures/Recycle bin/Recycle bin_D_Emissive.png
+Assets/Hash Game studios/Trash Bag & Trash Box/Textures/Recycle bin/Recycle bin_D_Metalic.png
+Assets/Hash Game studios/Trash Bag & Trash Box/Textures/Recycle bin/Recycle bin_UV.png
+Assets/Hash Game studios/Trash Bag & Trash Box/Textures/Recycle cardboard/Closed/Type 1/Recycle cardboard closed_Recycle_Emissive.png
+Assets/Hash Game studios/Trash Bag & Trash Box/Textures/Recycle cardboard/Closed/Type 2/Recycle cardboard closed_Dirt_Emissive.png
+Assets/Hash Game studios/Trash Bag & Trash Box/Textures/Recycle cardboard/Open/Recycle cardboard open_Emissive.png
+Assets/Hash Game studios/Trash Bag & Trash Box/Textures/Trash bag 1/Clean/Trash bag 1_C_Emissive.png
+Assets/Hash Game studios/Trash Bag & Trash Box/Textures/Trash bag 1/Dirt/Trash bag 1_Dirt_Emissive.png
+Assets/Hash Game studios/Trash Bag & Trash Box/Textures/Trash bag 1/Dirt/Trash bag 1_Dirt_Metalic.png
+Assets/Hash Game studios/Trash Bag & Trash Box/Textures/Trash bin 1/Orange/Trash bin 1_O_Emissive.png
+Assets/Hash Game studios/Trash Bag & Trash Box/Textures/Trash bin 1/Orange/Trash bin 1_O_Metalic.png
+Assets/Hash Game studios/Trash Bag & Trash Box/Textures/Trash bin 2/Machinery/Trash bin 2_M_AmbientOcclusion.png
+Assets/Hash Game studios/Trash Bag & Trash Box/Textures/Trash bin 2/Machinery/Trash bin 2_M_Emissive.png
+Assets/Hash Game studios/Trash Bag & Trash Box/Textures/Trash bin 2/Machinery/Trash bin 2_M_Height.png
+Assets/Hash Game studios/Trash Bag & Trash Box/Textures/Trash bin 2/Machinery/Trash bin 2_M_Normal.png
+Assets/Hash Game studios/Trash Bag & Trash Box/Textures/Trash bin 2/Wood/Trash bin 2_W_Emissive.png
+Assets/Hash Game studios/Trash Bag & Trash Box/Textures/Trash box 1/Aluminum/Trash box_Box_Emissive.png
+Assets/Hash Game studios/Trash Bag & Trash Box/Textures/Trash box 1/Aluminum/Trash box_Cap_Emissive.png
+Assets/Hash Game studios/Trash Bag & Trash Box/Textures/Trash box 1/Green/Trash box_Box_G_Emissive.png
+Assets/Hash Game studios/Trash Bag & Trash Box/Textures/Trash box 1/Green/Trash box_Cap_G_Emissive.png
+Assets/Hash Game studios/Trash Bag & Trash Box/Textures/Trash box 1/Orange/Trash box_Box_O_Emissive.png
+Assets/Hash Game studios/Trash Bag & Trash Box/Textures/Trash box 1/Orange/Trash box_Cap_O_Emissive.png
+Assets/Hash Game studios/Trash Bag & Trash Box/Textures/Trash box 2/Aluminum/Trash can 2_Box_Emissive.png
+Assets/Hash Game studios/Trash Bag & Trash Box/Textures/Trash box 2/Aluminum/Trash can 2_Cap_Emissive.png
+Assets/InputSystem_Actions.inputactions
+Assets/models/deer_in_mist/scene.bin
+Assets/player/player.unitypackage
+Assets/prefabs/Bottle 2_Collider.prefab
+Assets/Readme.asset
+Assets/TerrainDemoScene_URP/Prefabs/Details/BushDry_A.prefab
+Assets/TerrainDemoScene_URP/Prefabs/Details/BushDry_B.prefab
+Assets/TerrainDemoScene_URP/Prefabs/Details/Fern_B.prefab
+Assets/TerrainDemoScene_URP/Prefabs/Details/Fern_C.prefab
+Assets/TerrainDemoScene_URP/Prefabs/Details/Grass_D.prefab
+Assets/TerrainDemoScene_URP/Prefabs/Details/GrassDry_C.prefab
+Assets/TerrainDemoScene_URP/Prefabs/Details/GrassDry_D.prefab
+Assets/TerrainDemoScene_URP/Prefabs/Details/Heather_A.prefab
+Assets/TerrainDemoScene_URP/Prefabs/Details/Materials/Bush_Dry.asset
+Assets/TerrainDemoScene_URP/Prefabs/Details/Models/BushDry_A.asset
+Assets/TerrainDemoScene_URP/Prefabs/Details/Models/BushDry_B.asset
+Assets/TerrainDemoScene_URP/Prefabs/Details/Models/Fern_B.asset
+Assets/TerrainDemoScene_URP/Prefabs/Details/Models/Fern_C.asset
+Assets/TerrainDemoScene_URP/Prefabs/Details/Models/Grass_D.asset
+Assets/TerrainDemoScene_URP/Prefabs/Details/Models/GrassDry_C.asset
+Assets/TerrainDemoScene_URP/Prefabs/Details/Models/GrassDry_D.asset
+Assets/TerrainDemoScene_URP/Prefabs/Details/Models/Heather_A.asset
+Assets/TerrainDemoScene_URP/Prefabs/Details/Textures/Bush_Dry_BaseColor.tif
+Assets/TerrainDemoScene_URP/Prefabs/Details/Textures/Bush_Dry_MaskMap.tif
+Assets/TerrainDemoScene_URP/Prefabs/Details/Textures/Bush_Dry_Normal.tif
+Assets/TerrainDemoScene_URP/Prefabs/Details/Textures/Bush_Dry_Thickness.tif
+Assets/TerrainDemoScene_URP/Prefabs/Rocks/Models/Rock_A_02.fbx
+Assets/TerrainDemoScene_URP/Prefabs/Rocks/Rock_A_02.prefab
+Assets/TerrainDemoScene_URP/Prefabs/Rocks/Rock_B_02.prefab
+Assets/TerrainDemoScene_URP/Prefabs/Rocks/Textures/Rock_Details_01.tif
+Assets/TerrainDemoScene_URP/Prefabs/Skybox/Models/SkyboxHorizon.fbx
+Assets/TerrainDemoScene_URP/Prefabs/Skybox/Textures/Afternoon_Skybox.hdr
+Assets/TerrainDemoScene_URP/Prefabs/Skybox/Textures/Sky.exr
+Assets/TerrainDemoScene_URP/Prefabs/Trees/Conifer/Textures/Conifer_Billboard_Extra.png
+Assets/TerrainDemoScene_URP/Prefabs/Trees/Conifer/Textures/Conifer_Billboard_Subsurface.png
+Assets/TerrainDemoScene_URP/Prefabs/Trees/Cypress/Textures/Cypress_Forest_Desktop_Billboard_Subsurface.tif
+Assets/TerrainDemoScene_URP/Prefabs/Trees/Pines/Pine_A/Textures/Pine_A_Billboard_Extra.png
+Assets/TerrainDemoScene_URP/Prefabs/Trees/Pines/Pine_A/Textures/Pine_A_Billboard_Subsurface.png
+Assets/TerrainDemoScene_URP/Prefabs/UI/Bar.prefab
+Assets/TerrainDemoScene_URP/Prefabs/UI/Description.prefab
+Assets/TerrainDemoScene_URP/Prefabs/UI/Sprites/GradientFill_Sprite.tif
+Assets/TerrainDemoScene_URP/Prefabs/UI/Titles.prefab
+Assets/TerrainDemoScene_URP/Prefabs/Volumes/GlobalVolume.prefab
+Assets/TerrainDemoScene_URP/Readme.asset
+Assets/TerrainDemoScene_URP/Scripts/Help_Icon.png
+Assets/TerrainDemoScene_URP/Scripts/Icons/Icon.png
+Assets/TerrainDemoScene_URP/Settings/Noise/3DFractal_Noise_01.tga
+Assets/TerrainDemoScene_URP/Settings/URP/Universal Render Pipeline Asset_Renderer.asset
+Assets/TerrainDemoScene_URP/Settings/URP/UniversalRenderPipelineGlobalSettings.asset
+Assets/TerrainDemoScene_URP/Settings/URP/URP-HighQuality Pipeline Asset.asset
+Assets/TerrainDemoScene_URP/Settings/URP/URP-LowQuality Pipeline Asset.asset
+Assets/TerrainDemoScene_URP/Terrain/Brushes/Heightmaps/_New/hills01.tiff
+Assets/TerrainDemoScene_URP/Terrain/Brushes/Heightmaps/_New/hills02.tiff
+Assets/TerrainDemoScene_URP/Terrain/Brushes/Heightmaps/_New/mountain09.tiff
+Assets/TerrainDemoScene_URP/Terrain/Brushes/Heightmaps/_New/mountain10.tiff
+Assets/TerrainDemoScene_URP/Terrain/Brushes/Heightmaps/_New/mountain11.tiff
+Assets/TerrainDemoScene_URP/Terrain/Brushes/Heightmaps/_New/slope01.tiff
+Assets/TerrainDemoScene_URP/Terrain/Brushes/Heightmaps/_New/slope02.tiff
+Assets/TerrainDemoScene_URP/Terrain/Brushes/Heightmaps/_New/slope03.tiff
+Assets/TerrainDemoScene_URP/Terrain/Brushes/Heightmaps/_New/slope04.tiff
+Assets/TerrainDemoScene_URP/Terrain/Brushes/Heightmaps/_New/terrace.tiff
+Assets/TerrainDemoScene_URP/Terrain/Brushes/Heightmaps/canyon01.tif
+Assets/TerrainDemoScene_URP/Terrain/Brushes/Heightmaps/canyon02.tif
+Assets/TerrainDemoScene_URP/Terrain/Brushes/Heightmaps/canyon03.tif
+Assets/TerrainDemoScene_URP/Terrain/Brushes/Heightmaps/canyon04.tif
+Assets/TerrainDemoScene_URP/Terrain/Brushes/Heightmaps/canyon05.tif
+Assets/TerrainDemoScene_URP/Terrain/Brushes/Heightmaps/clouds.tif
+Assets/TerrainDemoScene_URP/Terrain/Brushes/Heightmaps/cracked_earth01.tif
+Assets/TerrainDemoScene_URP/Terrain/Brushes/Heightmaps/cracked_earth02.tif
+Assets/TerrainDemoScene_URP/Terrain/Brushes/Heightmaps/errosion01.tif
+Assets/TerrainDemoScene_URP/Terrain/Brushes/Heightmaps/errosion02.tif
+Assets/TerrainDemoScene_URP/Terrain/Brushes/Heightmaps/flat_mountain01.tif
+Assets/TerrainDemoScene_URP/Terrain/Brushes/Heightmaps/HeightmapTexture.preset
+Assets/TerrainDemoScene_URP/Terrain/Brushes/Heightmaps/island01.tif
+Assets/TerrainDemoScene_URP/Terrain/Brushes/Heightmaps/mountain01.tif
+Assets/TerrainDemoScene_URP/Terrain/Brushes/Heightmaps/mountain02.tif
+Assets/TerrainDemoScene_URP/Terrain/Brushes/Heightmaps/mountain03.tif
+Assets/TerrainDemoScene_URP/Terrain/Brushes/Heightmaps/mountain04.tif
+Assets/TerrainDemoScene_URP/Terrain/Brushes/Heightmaps/mountain05.tif
+Assets/TerrainDemoScene_URP/Terrain/Brushes/Heightmaps/mountain06.tif
+Assets/TerrainDemoScene_URP/Terrain/Brushes/Heightmaps/mountain07.tif
+Assets/TerrainDemoScene_URP/Terrain/Brushes/Heightmaps/mountain08.tif
+Assets/TerrainDemoScene_URP/Terrain/Brushes/Heightmaps/plateau01.tif
+Assets/TerrainDemoScene_URP/Terrain/Brushes/Heightmaps/plateau02.tif
+Assets/TerrainDemoScene_URP/Terrain/Brushes/Heightmaps/plateau03.tif
+Assets/TerrainDemoScene_URP/Terrain/Brushes/Heightmaps/ridge_edge01.tif
+Assets/TerrainDemoScene_URP/Terrain/Brushes/Heightmaps/ridge01.tif
+Assets/TerrainDemoScene_URP/Terrain/Brushes/Heightmaps/ridge02.tif
+Assets/TerrainDemoScene_URP/Terrain/Brushes/Heightmaps/ridge03.tif
+Assets/TerrainDemoScene_URP/Terrain/Brushes/Heightmaps/ridge04.tif
+Assets/TerrainDemoScene_URP/Terrain/Brushes/Heightmaps/ridge05.tif
+Assets/TerrainDemoScene_URP/Terrain/Brushes/Heightmaps/ridge06.tif
+Assets/TerrainDemoScene_URP/Terrain/Brushes/Heightmaps/rolling_hills01.tif
+Assets/TerrainDemoScene_URP/Terrain/Brushes/Heightmaps/soft_peaks01.tif
+Assets/TerrainDemoScene_URP/Terrain/Brushes/Heightmaps/volcanic.tif
+Assets/TerrainDemoScene_URP/Terrain/Brushes/Heightmaps/volcano01.tif
+Assets/TerrainDemoScene_URP/Terrain/Brushes/Heightmaps/white_square.tif
+Assets/TerrainDemoScene_URP/Terrain/Brushes/Noise_Soft_Brush.brush
+Assets/TerrainDemoScene_URP/Terrain/Brushes/Soft_Round_Brush.brush
+Assets/TerrainDemoScene_URP/Terrain/Brushes/Terrainstamp_Canyon01_Brush.brush
+Assets/TerrainDemoScene_URP/Terrain/Brushes/Terrainstamp_Canyon02_Brush.brush
+Assets/TerrainDemoScene_URP/Terrain/Brushes/Terrainstamp_Canyon03_Brush.brush
+Assets/TerrainDemoScene_URP/Terrain/Brushes/Terrainstamp_Canyon04_Brush.brush
+Assets/TerrainDemoScene_URP/Terrain/Brushes/Terrainstamp_Canyon05_Brush.brush
+Assets/TerrainDemoScene_URP/Terrain/Brushes/Terrainstamp_Crackedground01_Brush.brush
+Assets/TerrainDemoScene_URP/Terrain/Brushes/Terrainstamp_Crackedground02_Brush.brush
+Assets/TerrainDemoScene_URP/Terrain/Brushes/Terrainstamp_Erode01_Brush.brush
+Assets/TerrainDemoScene_URP/Terrain/Brushes/Terrainstamp_Erode02_Brush.brush
+Assets/TerrainDemoScene_URP/Terrain/Brushes/Terrainstamp_Flatmountain01_Brush.brush
+Assets/TerrainDemoScene_URP/Terrain/Brushes/Terrainstamp_Hills01_Brush.brush
+Assets/TerrainDemoScene_URP/Terrain/Brushes/Terrainstamp_Hills02_Brush.brush
+Assets/TerrainDemoScene_URP/Terrain/Brushes/Terrainstamp_Island01_Brush.brush
+Assets/TerrainDemoScene_URP/Terrain/Brushes/Terrainstamp_Mountain01_Brush.brush
+Assets/TerrainDemoScene_URP/Terrain/Brushes/Terrainstamp_Mountain02_Brush.brush
+Assets/TerrainDemoScene_URP/Terrain/Brushes/Terrainstamp_Mountain03_Brush.brush
+Assets/TerrainDemoScene_URP/Terrain/Brushes/Terrainstamp_Mountain04_Brush.brush
+Assets/TerrainDemoScene_URP/Terrain/Brushes/Terrainstamp_Mountain05_Brush.brush
+Assets/TerrainDemoScene_URP/Terrain/Brushes/Terrainstamp_Mountain06_Brush.brush
+Assets/TerrainDemoScene_URP/Terrain/Brushes/Terrainstamp_Mountain07_Brush.brush
+Assets/TerrainDemoScene_URP/Terrain/Brushes/Terrainstamp_Mountain08_Brush.brush
+Assets/TerrainDemoScene_URP/Terrain/Brushes/Terrainstamp_Mountain09_Brush.brush
+Assets/TerrainDemoScene_URP/Terrain/Brushes/Terrainstamp_Mountain10_Brush.brush
+Assets/TerrainDemoScene_URP/Terrain/Brushes/Terrainstamp_Mountain11_Brush.brush
+Assets/TerrainDemoScene_URP/Terrain/Brushes/Terrainstamp_Plateau01_Brush.brush
+Assets/TerrainDemoScene_URP/Terrain/Brushes/Terrainstamp_Plateau02_Brush.brush
+Assets/TerrainDemoScene_URP/Terrain/Brushes/Terrainstamp_Plateau03_Brush.brush
+Assets/TerrainDemoScene_URP/Terrain/Brushes/Terrainstamp_Ridge01_Brush.brush
+Assets/TerrainDemoScene_URP/Terrain/Brushes/Terrainstamp_Ridge02_Brush.brush
+Assets/TerrainDemoScene_URP/Terrain/Brushes/Terrainstamp_Ridge03_Brush.brush
+Assets/TerrainDemoScene_URP/Terrain/Brushes/Terrainstamp_Ridge04_Brush.brush
+Assets/TerrainDemoScene_URP/Terrain/Brushes/Terrainstamp_Ridge05_Brush.brush
+Assets/TerrainDemoScene_URP/Terrain/Brushes/Terrainstamp_Ridge06_Brush.brush
+Assets/TerrainDemoScene_URP/Terrain/Brushes/Terrainstamp_Ridgeedge01_Brush.brush
+Assets/TerrainDemoScene_URP/Terrain/Brushes/Terrainstamp_Rollinghills01_Brush.brush
+Assets/TerrainDemoScene_URP/Terrain/Brushes/Terrainstamp_Slope01_Brush.brush
+Assets/TerrainDemoScene_URP/Terrain/Brushes/Terrainstamp_Slope02_Brush.brush
+Assets/TerrainDemoScene_URP/Terrain/Brushes/Terrainstamp_Slope03_Brush.brush
+Assets/TerrainDemoScene_URP/Terrain/Brushes/Terrainstamp_Slope04_Brush.brush
+Assets/TerrainDemoScene_URP/Terrain/Brushes/Terrainstamp_Softpeaks01_Brush.brush
+Assets/TerrainDemoScene_URP/Terrain/Brushes/Terrainstamp_Terrace_Brush.brush
+Assets/TerrainDemoScene_URP/Terrain/Brushes/Terrainstamp_Volcano01_Brush.brush
+Assets/TerrainDemoScene_URP/Terrain/Brushes/Terrainstamp_Volcano02_Brush.brush
+Assets/TerrainDemoScene_URP/Terrain/DetailMaps/_Terrain_2_2_b6e03cf0-de91-4cae-b6af-0128d856ae43_0.asset
+Assets/TerrainDemoScene_URP/Terrain/DetailMaps/_Terrain_2_2_b6e03cf0-de91-4cae-b6af-0128d856ae43_1.asset
+Assets/TerrainDemoScene_URP/Terrain/DetailMaps/_Terrain_2_2_b6e03cf0-de91-4cae-b6af-0128d856ae43_10.asset
+Assets/TerrainDemoScene_URP/Terrain/DetailMaps/_Terrain_2_2_b6e03cf0-de91-4cae-b6af-0128d856ae43_11.asset
+Assets/TerrainDemoScene_URP/Terrain/DetailMaps/_Terrain_2_2_b6e03cf0-de91-4cae-b6af-0128d856ae43_12.asset
+Assets/TerrainDemoScene_URP/Terrain/DetailMaps/_Terrain_2_2_b6e03cf0-de91-4cae-b6af-0128d856ae43_13.asset
+Assets/TerrainDemoScene_URP/Terrain/DetailMaps/_Terrain_2_2_b6e03cf0-de91-4cae-b6af-0128d856ae43_14.asset
+Assets/TerrainDemoScene_URP/Terrain/DetailMaps/_Terrain_2_2_b6e03cf0-de91-4cae-b6af-0128d856ae43_15.asset
+Assets/TerrainDemoScene_URP/Terrain/DetailMaps/_Terrain_2_2_b6e03cf0-de91-4cae-b6af-0128d856ae43_16.asset
+Assets/TerrainDemoScene_URP/Terrain/DetailMaps/_Terrain_2_2_b6e03cf0-de91-4cae-b6af-0128d856ae43_17.asset
+Assets/TerrainDemoScene_URP/Terrain/DetailMaps/_Terrain_2_2_b6e03cf0-de91-4cae-b6af-0128d856ae43_18.asset
+Assets/TerrainDemoScene_URP/Terrain/DetailMaps/_Terrain_2_2_b6e03cf0-de91-4cae-b6af-0128d856ae43_19.asset
+Assets/TerrainDemoScene_URP/Terrain/DetailMaps/_Terrain_2_2_b6e03cf0-de91-4cae-b6af-0128d856ae43_2.asset
+Assets/TerrainDemoScene_URP/Terrain/DetailMaps/_Terrain_2_2_b6e03cf0-de91-4cae-b6af-0128d856ae43_20.asset
+Assets/TerrainDemoScene_URP/Terrain/DetailMaps/_Terrain_2_2_b6e03cf0-de91-4cae-b6af-0128d856ae43_21.asset
+Assets/TerrainDemoScene_URP/Terrain/DetailMaps/_Terrain_2_2_b6e03cf0-de91-4cae-b6af-0128d856ae43_3.asset
+Assets/TerrainDemoScene_URP/Terrain/DetailMaps/_Terrain_2_2_b6e03cf0-de91-4cae-b6af-0128d856ae43_4.asset
+Assets/TerrainDemoScene_URP/Terrain/DetailMaps/_Terrain_2_2_b6e03cf0-de91-4cae-b6af-0128d856ae43_5.asset
+Assets/TerrainDemoScene_URP/Terrain/DetailMaps/_Terrain_2_2_b6e03cf0-de91-4cae-b6af-0128d856ae43_6.asset
+Assets/TerrainDemoScene_URP/Terrain/DetailMaps/_Terrain_2_2_b6e03cf0-de91-4cae-b6af-0128d856ae43_7.asset
+Assets/TerrainDemoScene_URP/Terrain/DetailMaps/_Terrain_2_2_b6e03cf0-de91-4cae-b6af-0128d856ae43_8.asset
+Assets/TerrainDemoScene_URP/Terrain/DetailMaps/_Terrain_2_2_b6e03cf0-de91-4cae-b6af-0128d856ae43_9.asset
+Assets/TerrainDemoScene_URP/Terrain/Palettes/TerrainDemo_Palette.asset
+Assets/TerrainDemoScene_URP/Terrain/Textures/Grass_B/Grass_B_MaskMap.tif
+Assets/TerrainDemoScene_URP/Terrain/Textures/Grass_Soil_A/Grass_Soil_A_MaskMap.tif
+Assets/TerrainDemoScene_URP/Terrain/Textures/Grass_Soil_A/Grass_Soil_A_Normal.tif
+Assets/TerrainDemoScene_URP/TextMeshPro/Fonts/InterBold.asset
+Assets/TerrainDemoScene_URP/TextMeshPro/Fonts/InterBold.otf
+Assets/TerrainDemoScene_URP/TextMeshPro/Fonts/InterRegular.asset
+Assets/TerrainDemoScene_URP/TextMeshPro/Fonts/InterRegular.otf
+Assets/TerrainDemoScene_URP/VFXGraphs/Textures/WispySmoke01_8x8.tga
+Assets/TerrainDemoScene_URP/VFXGraphs/Textures/WispySmoke02_8x8.tga
+Assets/TerrainDemoScene_URP/VFXGraphs/Textures/WispySmoke02b_8x8.tga
+Assets/TerrainDemoScene_URP/VFXGraphs/Textures/WispySmoke03_8x8.tga
+Assets/TerrainDemoScene_URP/VFXGraphs/Textures/WispySmoke03b_8x8.tga
+Assets/TutorialInfo/Icons/URP.png
+Assets/TutorialInfo/Layout.wlt

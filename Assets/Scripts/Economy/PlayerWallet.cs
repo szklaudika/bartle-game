@@ -52,6 +52,8 @@ public class PlayerWallet : MonoBehaviour
         MoneyChanged?.Invoke(-price);
         SeedsChanged?.Invoke(count);
         Log("seed_buy", PlayerPosition, "seed", count);
+        if (QuestManager.Instance != null)
+            QuestManager.Instance.NotifySeedsBought(count);
         return true;
     }
 

@@ -18,7 +18,7 @@ using UnityEngine.Video;
 public static class MainMenuSceneBuilder
 {
     private const string ScenePath = "Assets/Scenes/MainMenu.unity";
-    private const string GameScenePath = "Assets/Scenes/Game.unity";               // New Game (zatiaľ prázdna)
+    private const string GameScenePath = "Assets/Scenes/ForestDefender.unity";     // New Game → otvorený svet
     private const string TutorialScenePath = "Assets/Scenes/TerrainDemoScene.unity"; // Play Tutorial
     private const string VideoPath = "Assets/menu/Video Project 2.mp4";
     private const string GameTitle = "Forest Guardian";
@@ -334,5 +334,5 @@ public static class MainMenuSceneBuilder
         "<b>Space</b>  –  jump<pos=50%><b>Left click</b>  –  cast a fireball\n" +
         "<b>E</b>  –  talk / interact<pos=50%><b>F</b>  –  plant a seed\n" +
         "<b>I</b>  –  open the book<pos=50%><b>V</b>  –  first / third person\n" +
-        "<b>Esc</b>  –  pause menu";
+        "<b>B</b>  –  seed shop<pos=50%><b>Esc</b>  –  pause menu";
 }

@@ -21,10 +21,15 @@ public class PlayerHUD : MonoBehaviour
     public float deathFadeTime = 1.5f;
     public float cameraFallTime = 1.2f;
 
+    // zelené obrázky ukazovateľa (z Bloodlines UI) v Assets/Resources/UI/HealthBar
+    private const string BarSpritePath = "UI/HealthBar/";
+    private const float BarFrameMargin = 0.04f;
+
     private PlayerHealth _health;
     private RectTransform _fill;
     private Image _fillImage;
-    private RectTransform _lostFill;   // biely pás, ktorý pomaly dobieha za zdravím
+    private RectTransform _lostFill;   // krémový pás, ktorý pomaly dobieha za zdravím
+    private Image _lostFillImage;
     private TextMeshProUGUI _valueText;
     private Image _flash;
     private CanvasGroup _deathScreen;
@@ -65,9 +70,8 @@ public class PlayerHUD : MonoBehaviour
             ? Mathf.MoveTowards(_lostPercent, _shownPercent, Time.deltaTime * 0.5f)
             : _shownPercent;
 
-        _fill.anchorMax = new Vector2(_shownPercent, 1f);
-        _lostFill.anchorMax = new Vector2(_lostPercent, 1f);
-        _fillImage.color = HealthColor(_shownPercent);
+        _fillImage.fillAmount = BarFill(_shownPercent);
+        _lostFillImage.fillAmount = BarFill(_lostPercent);
         _valueText.text = $"{Mathf.CeilToInt(_health.CurrentHealth)} / {Mathf.RoundToInt(_health.maxHealth)}";
 
         // ---------- červený záblesk; pri nízkom zdraví jemne pulzuje ----------
@@ -142,14 +146,6 @@ public class PlayerHUD : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    private static Color HealthColor(float t)
-    {
-        // 1→0.5: zelená→žltá, 0.5→0: žltá→červená
-        return t > 0.5f
-            ? Color.Lerp(Color.yellow, Color.green, (t - 0.5f) / 0.5f)
-            : Color.Lerp(Color.red, Color.yellow, t / 0.5f);
-    }
-
     private static void SetAlpha(Graphic g, float a)
     {
         Color c = g.color;
@@ -180,7 +176,7 @@ public class PlayerHUD : MonoBehaviour
         var panel = NewRect("Health", root);
         SetAnchors(panel, Vector2.zero, Vector2.zero, Vector2.zero);
         panel.anchoredPosition = new Vector2(30, 30);
-        panel.sizeDelta = new Vector2(380, 84);
+        panel.sizeDelta = new Vector2(400, 112);
         AddImage(panel, panelColor);
 
         var label = NewRect("Label", panel);
@@ -196,16 +192,18 @@ public class PlayerHUD : MonoBehaviour
         value.sizeDelta = new Vector2(-36, 32);
         _valueText = AddText(value, 24, TextAlignmentOptions.Right, Color.white);
 
+        // ukazovateľ v štýle Bloodlines UI (zelená verzia): prázdny rám, pod ním krémový pás straty, navrchu zelená
         var bar = NewRect("Bar", panel);
         SetAnchors(bar, new Vector2(0, 0), new Vector2(1, 0), new Vector2(0.5f, 0));
-        bar.anchoredPosition = new Vector2(0, 16);
-        bar.sizeDelta = new Vector2(-36, 24);
-        AddImage(bar, new Color(0.15f, 0.15f, 0.15f, 0.9f));
+        bar.anchoredPosition = new Vector2(0, 10);
+        bar.sizeDelta = new Vector2(-24, 58);
+        Sprite empty = Resources.Load<Sprite>(BarSpritePath + "HealthBar_Empty");
+        AddImage(bar, empty != null ? Color.white : new Color(0.15f, 0.15f, 0.15f, 0.9f)).sprite = empty;
 
         _lostFill = Stretch(NewRect("Lost", bar));
-        AddImage(_lostFill, lostHealthColor);
+        _lostFillImage = AddBarFill(_lostFill, "HealthBar_Lost", lostHealthColor);
         _fill = Stretch(NewRect("Fill", bar));
-        _fillImage = AddImage(_fill, Color.green);
+        _fillImage = AddBarFill(_fill, "HealthBar_Full", new Color(0.13f, 0.6f, 0.25f));
 
         // obrazovka smrti
         var death = Stretch(NewRect("DeathScreen", root));
@@ -238,6 +236,22 @@ public class PlayerHUD : MonoBehaviour
         _restartHint.text = "Stlač R pre nový pokus";
         _restartHint.gameObject.SetActive(false);
     }
+
+    // vrstva ukazovateľa, ktorá sa odkrýva zľava doprava; bez obrázka ostane jednofarebná
+    private static Image AddBarFill(RectTransform rt, string spriteName, Color fallbackColor)
+    {
+        Sprite sprite = Resources.Load<Sprite>(BarSpritePath + spriteName);
+        Image img = AddImage(rt, sprite != null ? Color.white : fallbackColor);
+        img.sprite = sprite;
+        img.type = Image.Type.Filled;
+        img.fillMethod = Image.FillMethod.Horizontal;
+        img.fillOrigin = (int)Image.OriginHorizontal.Left;
+        return img;
+    }
+
+    // obrázok má po stranách rám – 0 % a 100 % zdravia sú na vnútorných okrajoch rámu
+    private static float BarFill(float percent) =>
+        percent <= 0f ? 0f : BarFrameMargin + percent * (1f - 2f * BarFrameMargin);
 
     private static RectTransform NewRect(string name, Transform parent)
     {

@@ -46,7 +46,9 @@ public class PlayerShooting : MonoBehaviour
 
     void Update()
     {
-        if (Mouse.current.leftButton.wasPressedThisFrame && canShoot)
+        // v otvorenom obchode ľavé tlačidlo nakupuje, nestrieľa; ani keď hráčka stojí (dialóg, okno s výberom)
+        bool frozen = playerController != null && !playerController.canMove;
+        if (Mouse.current.leftButton.wasPressedThisFrame && canShoot && !EconomyUI.IsUsingMouse && !frozen)
         {
             StartCoroutine(ShootFireballRoutine());
         }
@@ -55,6 +57,8 @@ public class PlayerShooting : MonoBehaviour
     private IEnumerator ShootFireballRoutine()
     {
         canShoot = false;
+        if (playerController != null)
+            playerController.SetCasting(true);
 
         // 🔊 Play sound IMMEDIATELY when the attack begins
         if (audioSource != null && shootSound != null)
@@ -73,7 +77,17 @@ public class PlayerShooting : MonoBehaviour
         // Wait for remaining cooldown
         yield return new WaitForSeconds(fireCooldown - fireballSpawnDelay);
 
+        if (playerController != null)
+            playerController.SetCasting(false);
         canShoot = true;
+    }
+
+    private void OnDisable()
+    {
+        // the coroutine stops with the component – don't leave the camera in casting mode
+        canShoot = true;
+        if (playerController != null)
+            playerController.SetCasting(false);
     }
 
     private void Shoot()
